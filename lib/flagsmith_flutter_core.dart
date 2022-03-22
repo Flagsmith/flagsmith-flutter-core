@@ -1,4 +1,4 @@
-library flagsmith_core;
+library flagsmith_flutter_core;
 
 export 'src/extensions/converters.dart';
 export 'src/model/index.dart';

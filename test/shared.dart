@@ -1,4 +1,4 @@
-import 'package:flagsmith_core/flagsmith_core.dart';
+import 'package:flagsmith_flutter_core/flagsmith_flutter_core.dart';
 
 final seeds = [
   Flag.seed('my_feature', enabled: true),
@@ -239,11 +239,11 @@ const fakeResponse = r'''[
             "name": "oauth_google",
             "created_date": "2020-03-28T21:04:51.557946Z",
             "description": "Google login key",
-            "initial_value": "{\n \"clientId\":\"232959427810-br6ltnrgouktp0ngsbs04o14ueb9rch0.apps.googleusercontent.com\",\n \"apiKey\":\"AIzaSyCnHuN-y6BIEAM5vTISXaz3X9GpEPSxWjo\"\n}",
+            "initial_value": "{\n \"clientId\":\"googleclientid\",\n \"apiKey\":\"googleclientsecret\"\n}",
             "default_enabled": false,
             "type": "STANDARD"
         },
-        "feature_state_value": "{\n \"clientId\":\"232959427810-br6ltnrgouktp0ngsbs04o14ueb9rch0.apps.googleusercontent.com\",\n \"apiKey\":\"AIzaSyCnHuN-y6BIEAM5vTISXaz3X9GpEPSxWjo\"\n}",
+        "feature_state_value": "{\n \"clientId\":\"googleclientid\",\n \"apiKey\":\"googleclientsecret\"\n}",
         "enabled": true,
         "environment": 23,
         "identity": null,

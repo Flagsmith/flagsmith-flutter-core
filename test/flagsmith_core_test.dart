@@ -1,4 +1,4 @@
-import 'package:flagsmith_core/flagsmith_core.dart';
+import 'package:flagsmith_flutter_core/flagsmith_flutter_core.dart';
 import 'package:collection/collection.dart';
 import 'package:test/test.dart';
 

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:flagsmith_core/src/extensions/string_ext.dart';
+import 'package:flagsmith_flutter_core/src/extensions/string_ext.dart';
 
 void main() {
   group('[Futures]', () {
