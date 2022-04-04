@@ -2,7 +2,7 @@ name: Analyze, test and publish
 on:
   push:
     branches:
-      - 'feature/setup-CI'
+      - 'main'
 
 jobs:
   analyze:
