@@ -35,7 +35,7 @@ void main() {
       final trait = TraitWithIdentity.fromJson(decodedTraitNotStringValue);
       expect(trait.identity.identifier, identityId);
       expect(trait.key, 'trait_key');
-      expect(trait.value, 'true');
+      expect(trait.value, true);
     });
   });
 

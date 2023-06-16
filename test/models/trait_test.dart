@@ -30,7 +30,7 @@ void main() {
       final trait = Trait.fromJson(decodedTraitNotStringValue);
       expect(trait.id, 12);
       expect(trait.key, 'trait_key');
-      expect(trait.value, 'true');
+      expect(trait.value, true);
     });
   });
   group('[Trait] - converting', () {
