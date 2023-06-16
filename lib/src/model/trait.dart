@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import '../extensions/converters.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'identity.dart';
