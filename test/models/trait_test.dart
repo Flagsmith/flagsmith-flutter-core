@@ -87,9 +87,10 @@ void main() {
     });
   });
 
-
   group('toJson', () {
-    test('When trait with int value converted to Map<String, dynamic> then success', () {
+    test(
+        'When trait with int value converted to Map<String, dynamic> then success',
+        () {
       final trait = Trait(
         id: 12,
         key: 'trait_key',
@@ -104,7 +105,9 @@ void main() {
       expect(mapped['trait_value'], 42);
     });
 
-    test('When trait with double value converted to Map<String, dynamic> then success', () {
+    test(
+        'When trait with double value converted to Map<String, dynamic> then success',
+        () {
       final trait = Trait(
         id: 12,
         key: 'trait_key',
@@ -119,7 +122,9 @@ void main() {
       expect(mapped['trait_value'], 3.14);
     });
 
-    test('When trait with bool value converted to Map<String, dynamic> then success', () {
+    test(
+        'When trait with bool value converted to Map<String, dynamic> then success',
+        () {
       final trait = Trait(
         id: 12,
         key: 'trait_key',
@@ -134,6 +139,4 @@ void main() {
       expect(mapped['trait_value'], true);
     });
   });
-
-
 }

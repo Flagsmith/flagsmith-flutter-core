@@ -11,10 +11,7 @@ class Trait {
   final int? id;
   @JsonKey(name: 'trait_key')
   final String key;
-  @JsonKey(
-      name: 'trait_value',
-      fromJson: _fromJson,
-      toJson: _toJson)
+  @JsonKey(name: 'trait_value', fromJson: _fromJson, toJson: _toJson)
   final dynamic value;
 
   Trait({
@@ -68,7 +65,6 @@ class Trait {
     throw ArgumentError('Invalid value type');
   }
 }
-
 
 @JsonSerializable()
 class TraitWithIdentity {
