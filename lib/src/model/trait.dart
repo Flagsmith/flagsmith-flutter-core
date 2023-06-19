@@ -43,22 +43,14 @@ class Trait {
       } else {
         return jsonValue.toDouble(); // Treat as double if it's a decimal
       }
-    } else if (jsonValue is String) {
-      return jsonValue;
-    } else if (jsonValue is bool) {
+    } else if (jsonValue is String || jsonValue is bool) {
       return jsonValue;
     }
     throw ArgumentError('Invalid value type');
   }
 
   static dynamic _toJson(dynamic value) {
-    if (value is double) {
-      return value; // Keep double as is
-    } else if (value is int) {
-      return value; // Keep int as is
-    } else if (value is String) {
-      return value;
-    } else if (value is bool) {
+    if (value is double || value is int || value is String || value is bool) {
       return value;
     }
     throw ArgumentError('Invalid value type');
@@ -108,22 +100,14 @@ class TraitWithIdentity {
       } else {
         return jsonValue.toDouble(); // Treat as double if it's a decimal
       }
-    } else if (jsonValue is String) {
-      return jsonValue;
-    } else if (jsonValue is bool) {
+    } else if (jsonValue is String || jsonValue is bool) {
       return jsonValue;
     }
     throw ArgumentError('Invalid value type');
   }
 
   static dynamic _toJson(dynamic value) {
-    if (value is double) {
-      return value; // Keep double as is
-    } else if (value is int) {
-      return value; // Keep int as is
-    } else if (value is String) {
-      return value;
-    } else if (value is bool) {
+    if (value is double || value is int || value is String || value is bool) {
       return value;
     }
     throw ArgumentError('Invalid value type');
