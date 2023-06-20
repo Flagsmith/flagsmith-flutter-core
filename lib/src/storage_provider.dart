@@ -138,7 +138,7 @@ class StorageProvider with SecureStorage {
       return;
     }
     _streams[item.key]?.add(item);
-    log('_updateSubject ${item.key} -> ${_streams[item.key]?.value.enabled} f: ${item.enabled}');
+    log('_updateSubject ${item.key} -> ${_streams[item.key]?.value?.enabled} f: ${item.enabled}');
   }
 
   void _destroySubject(String featureName) {
