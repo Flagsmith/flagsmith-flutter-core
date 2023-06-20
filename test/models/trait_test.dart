@@ -11,13 +11,29 @@ void main() {
   }''';
   final decodedTraitStringValue =
       jsonDecode(traitStringValue) as Map<String, dynamic>;
-  const traitNotStringValue = '''{
+
+  const traitBoolValue = '''{
     "id": 12,
     "trait_key": "trait_key",
     "trait_value": true
   }''';
-  final decodedTraitNotStringValue =
-      jsonDecode(traitNotStringValue) as Map<String, dynamic>;
+  final decodedTraitBoolValue =
+      jsonDecode(traitBoolValue) as Map<String, dynamic>;
+  const traitIntValue = '''{
+    "id": 12,
+    "trait_key": "trait_key",
+    "trait_value": 1
+  }''';
+  final decodedTraitIntValue =
+      jsonDecode(traitIntValue) as Map<String, dynamic>;
+  const traitDoubleValue = '''{
+    "id": 12,
+    "trait_key": "trait_key",
+    "trait_value": 10.1
+  }''';
+  final decodedTraitDoubleValue =
+      jsonDecode(traitDoubleValue) as Map<String, dynamic>;
+
   group('[Trait] - basic tests', () {
     test('When trait parsed then success', () {
       final trait = Trait.fromJson(decodedTraitStringValue);
@@ -27,10 +43,23 @@ void main() {
     });
 
     test('When trait parsed with bool value then success', () {
-      final trait = Trait.fromJson(decodedTraitNotStringValue);
+      final trait = Trait.fromJson(decodedTraitBoolValue);
       expect(trait.id, 12);
       expect(trait.key, 'trait_key');
-      expect(trait.value, 'true');
+      expect(trait.value, true);
+    });
+    test('When trait parsed with int value then success', () {
+      final trait = Trait.fromJson(decodedTraitIntValue);
+      expect(trait.id, 12);
+      expect(trait.key, 'trait_key');
+      expect(trait.value, 1);
+    });
+
+    test('When trait parsed with double value then success', () {
+      final trait = Trait.fromJson(decodedTraitDoubleValue);
+      expect(trait.id, 12);
+      expect(trait.key, 'trait_key');
+      expect(trait.value, 10.1);
     });
   });
 
@@ -85,6 +114,76 @@ void main() {
       expect(updated.id, 12);
       expect(updated.key, 'trait_key');
       expect(updated.value, 'value');
+    });
+  });
+
+  group('toJson', () {
+    test(
+        'When trait with int value converted to Map<String, dynamic> then success',
+        () {
+      final trait = Trait(
+        id: 12,
+        key: 'trait_key',
+        value: 42,
+      );
+
+      final mapped = trait.toJson();
+
+      expect(mapped, isNotNull);
+      expect(mapped['id'], 12);
+      expect(mapped['trait_key'], 'trait_key');
+      expect(mapped['trait_value'], 42);
+    });
+
+    test(
+        'When trait with string value converted to Map<String, dynamic> then success',
+        () {
+      final trait = Trait(
+        id: 12,
+        key: 'trait_key',
+        value: "trait_value",
+      );
+
+      final mapped = trait.toJson();
+
+      expect(mapped, isNotNull);
+      expect(mapped['id'], 12);
+      expect(mapped['trait_key'], 'trait_key');
+      expect(mapped['trait_value'], 'trait_value');
+    });
+
+    test(
+        'When trait with double value converted to Map<String, dynamic> then success',
+        () {
+      final trait = Trait(
+        id: 12,
+        key: 'trait_key',
+        value: 3.14,
+      );
+
+      final mapped = trait.toJson();
+
+      expect(mapped, isNotNull);
+      expect(mapped['id'], 12);
+      expect(mapped['trait_key'], 'trait_key');
+      expect(mapped['trait_value'], 3.14);
+    });
+
+    test(
+        'When trait with bool value converted to Map<String, dynamic> then success',
+        () {
+      final trait = Trait(
+        id: 12,
+        key: 'trait_key',
+        value: true,
+      );
+
+      final mapped = trait.toJson();
+
+      expect(mapped, isNotNull);
+      expect(mapped['id'], 12);
+      expect(mapped['trait_key'], 'trait_key');
+      expect(mapped['trait_value'], true);
     });
   });
 }

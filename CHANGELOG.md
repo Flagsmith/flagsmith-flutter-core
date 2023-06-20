@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.0
+* trait/value: Add support for int,float, bool and string
+
 ## 2.3.1
 
 * Updated rxdart dependency

@@ -12,21 +12,21 @@ Trait _$TraitFromJson(Map<String, dynamic> json) {
   return Trait(
     id: json['id'] as int?,
     key: json['trait_key'] as String,
-    value: nonNullStringFromJson(json['trait_value']),
+    value: Trait._fromJson(json['trait_value']),
   );
 }
 
 Map<String, dynamic> _$TraitToJson(Trait instance) => <String, dynamic>{
       'id': instance.id,
       'trait_key': instance.key,
-      'trait_value': stringToJson(instance.value),
+      'trait_value': Trait._toJson(instance.value),
     };
 
 TraitWithIdentity _$TraitWithIdentityFromJson(Map<String, dynamic> json) {
   return TraitWithIdentity(
     identity: Identity.fromJson(json['identity'] as Map<String, dynamic>),
     key: json['trait_key'] as String,
-    value: nonNullStringFromJson(json['trait_value']),
+    value: TraitWithIdentity._fromJson(json['trait_value']),
   );
 }
 
@@ -34,5 +34,5 @@ Map<String, dynamic> _$TraitWithIdentityToJson(TraitWithIdentity instance) =>
     <String, dynamic>{
       'identity': instance.identity.toJson(),
       'trait_key': instance.key,
-      'trait_value': stringToJson(instance.value),
+      'trait_value': TraitWithIdentity._toJson(instance.value),
     };

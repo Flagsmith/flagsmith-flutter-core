@@ -3,7 +3,7 @@ description: >-
   Core Package of Flutter Client SDK for https://www.flagsmith.com/, Flagsmith is 100% Open
   Source. Host yourself or let us take care of the hosting.
 
-version: 2.3.1
+version: 3.0.0
 homepage: https://github.com/Flagsmith/flagsmith-flutter-core
 repository: https://github.com/Flagsmith/flagsmith-flutter-core
 issue_tracker: https://github.com/Flagsmith/flagsmith-flutter-core/issues
