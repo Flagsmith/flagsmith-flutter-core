@@ -6,8 +6,12 @@ part 'identity.g.dart';
 /// Personalized user
 @JsonSerializable()
 class Identity {
+  @JsonKey(includeIfNull: false)
+  final bool? transient;
   final String identifier;
+
   const Identity({
+    this.transient,
     required this.identifier,
   });
 
@@ -16,6 +20,6 @@ class Identity {
 
   Map<String, dynamic> toJson() => _$IdentityToJson(this);
   String asString() => jsonEncode(toJson());
-  Identity copyWith({String? identifier}) =>
-      Identity(identifier: identifier ?? this.identifier);
+  Identity copyWith({String? identifier, bool? transient}) =>
+      Identity(identifier: identifier ?? this.identifier, transient: transient ?? this.transient);
 }

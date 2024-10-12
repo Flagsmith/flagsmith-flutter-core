@@ -8,6 +8,8 @@ part 'trait.g.dart';
 @JsonSerializable()
 class Trait {
   final int? id;
+  @JsonKey(includeIfNull: false)
+  final bool? transient;
   @JsonKey(name: 'trait_key')
   final String key;
   @JsonKey(name: 'trait_value', fromJson: _fromJson, toJson: _toJson)
@@ -15,6 +17,7 @@ class Trait {
 
   Trait({
     this.id,
+    this.transient,
     required this.key,
     required this.value,
   });

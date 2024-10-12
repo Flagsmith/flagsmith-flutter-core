@@ -8,16 +8,15 @@ part of 'flags_and_traits.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FlagsAndTraits _$FlagsAndTraitsFromJson(Map<String, dynamic> json) {
-  return FlagsAndTraits(
-    flags: (json['flags'] as List<dynamic>?)
-        ?.map((e) => Flag.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    traits: (json['traits'] as List<dynamic>?)
-        ?.map((e) => Trait.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+FlagsAndTraits _$FlagsAndTraitsFromJson(Map<String, dynamic> json) =>
+    FlagsAndTraits(
+      flags: (json['flags'] as List<dynamic>?)
+          ?.map((e) => Flag.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      traits: (json['traits'] as List<dynamic>?)
+          ?.map((e) => Trait.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$FlagsAndTraitsToJson(FlagsAndTraits instance) =>
     <String, dynamic>{

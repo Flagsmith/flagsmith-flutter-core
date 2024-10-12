@@ -8,27 +8,36 @@ part of 'trait.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Trait _$TraitFromJson(Map<String, dynamic> json) {
-  return Trait(
-    id: json['id'] as int?,
-    key: json['trait_key'] as String,
-    value: Trait._fromJson(json['trait_value']),
-  );
+Trait _$TraitFromJson(Map<String, dynamic> json) => Trait(
+      id: (json['id'] as num?)?.toInt(),
+      transient: json['transient'] as bool?,
+      key: json['trait_key'] as String,
+      value: Trait._fromJson(json['trait_value']),
+    );
+
+Map<String, dynamic> _$TraitToJson(Trait instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('transient', instance.transient);
+  val['trait_key'] = instance.key;
+  val['trait_value'] = Trait._toJson(instance.value);
+  return val;
 }
 
-Map<String, dynamic> _$TraitToJson(Trait instance) => <String, dynamic>{
-      'id': instance.id,
-      'trait_key': instance.key,
-      'trait_value': Trait._toJson(instance.value),
-    };
-
-TraitWithIdentity _$TraitWithIdentityFromJson(Map<String, dynamic> json) {
-  return TraitWithIdentity(
-    identity: Identity.fromJson(json['identity'] as Map<String, dynamic>),
-    key: json['trait_key'] as String,
-    value: TraitWithIdentity._fromJson(json['trait_value']),
-  );
-}
+TraitWithIdentity _$TraitWithIdentityFromJson(Map<String, dynamic> json) =>
+    TraitWithIdentity(
+      identity: Identity.fromJson(json['identity'] as Map<String, dynamic>),
+      key: json['trait_key'] as String,
+      value: TraitWithIdentity._fromJson(json['trait_value']),
+    );
 
 Map<String, dynamic> _$TraitWithIdentityToJson(TraitWithIdentity instance) =>
     <String, dynamic>{

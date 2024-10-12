@@ -8,18 +8,16 @@ part of 'feature.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Feature _$FeatureFromJson(Map<String, dynamic> json) {
-  return Feature(
-    id: json['id'] as int?,
-    name: json['name'] as String,
-    createdDate: json['created_date'] == null
-        ? null
-        : DateTime.parse(json['created_date'] as String),
-    initialValue: stringFromJson(json['initial_value']),
-    defaultValue: json['default_enabled'] as bool?,
-    description: json['description'] as String?,
-  );
-}
+Feature _$FeatureFromJson(Map<String, dynamic> json) => Feature(
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String,
+      createdDate: json['created_date'] == null
+          ? null
+          : DateTime.parse(json['created_date'] as String),
+      initialValue: stringFromJson(json['initial_value']),
+      defaultValue: json['default_enabled'] as bool?,
+      description: json['description'] as String?,
+    );
 
 Map<String, dynamic> _$FeatureToJson(Feature instance) => <String, dynamic>{
       'id': instance.id,

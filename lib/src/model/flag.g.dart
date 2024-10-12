@@ -8,17 +8,15 @@ part of 'flag.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Flag _$FlagFromJson(Map<String, dynamic> json) {
-  return Flag(
-    id: json['id'] as int?,
-    feature: Feature.fromJson(json['feature'] as Map<String, dynamic>),
-    stateValue: stringFromJson(json['feature_state_value']),
-    enabled: json['enabled'] as bool?,
-    environment: json['environment'] as int?,
-    identity: json['identity'] as int?,
-    featureSegment: json['feature_segment'] as int?,
-  );
-}
+Flag _$FlagFromJson(Map<String, dynamic> json) => Flag(
+      id: (json['id'] as num?)?.toInt(),
+      feature: Feature.fromJson(json['feature'] as Map<String, dynamic>),
+      stateValue: stringFromJson(json['feature_state_value']),
+      enabled: json['enabled'] as bool?,
+      environment: (json['environment'] as num?)?.toInt(),
+      identity: (json['identity'] as num?)?.toInt(),
+      featureSegment: (json['feature_segment'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$FlagToJson(Flag instance) => <String, dynamic>{
       'id': instance.id,
