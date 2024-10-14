@@ -88,8 +88,8 @@ class StorageProvider with SecureStorage {
 
   Future<bool> saveAll(List<Flag> items) async {
     for (var item in items) {
-      final _current = await read(item.key);
-      if (_current != null) {
+      final current = await read(item.key);
+      if (current != null) {
         await update(item.key, item);
       } else {
         await create(item.key, item);

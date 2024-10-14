@@ -21,16 +21,16 @@ void main() {
             const TypeMatcher<Flag>()
                 .having((s) => s.enabled, '$myFeature is not enabled', false),
           ]));
-      final _toggled = await store.togggleFeature(myFeature);
-      expect(_toggled, isTrue);
+      final toggled = await store.togggleFeature(myFeature);
+      expect(toggled, isTrue);
     });
 
     test('Subject value changed when flag was changed.', () async {
       await store.clear();
       await store.seed(items: seeds);
-      final _feature = await store.read(myFeature);
-      expect(_feature, isNotNull);
-      expect(_feature!.enabled, isTrue);
+      final feature = await store.read(myFeature);
+      expect(feature, isNotNull);
+      expect(feature!.enabled, isTrue);
       expect(store.subject(myFeature)?.stream.valueOrNull?.enabled, true);
 
       expect(

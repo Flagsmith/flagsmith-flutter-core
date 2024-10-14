@@ -43,20 +43,20 @@ void main() {
     expect(items, isEmpty);
   });
   test('Create a flag', () async {
-    final _created = await storageProvider.create(
+    final created = await storageProvider.create(
         'test_feature', Flag.seed('test_feature', enabled: false));
-    expect(_created, isTrue);
+    expect(created, isTrue);
   });
   test('Save all flags', () async {
-    final _created = await storageProvider.saveAll([
+    final created = await storageProvider.saveAll([
       Flag.seed('test_feature_a', enabled: false),
       Flag.seed('test_feature_b', enabled: true)
     ]);
-    expect(_created, isTrue);
-    final _all = await storageProvider.getAll();
-    expect(_all, isNotEmpty);
+    expect(created, isTrue);
+    final all0 = await storageProvider.getAll();
+    expect(all0, isNotEmpty);
     expect(
-        _all,
+        all0,
         const TypeMatcher<List<Flag>>().having(
             (p0) => p0
                 .firstWhereOrNull((element) => element.key == 'test_feature_a'),
@@ -65,15 +65,15 @@ void main() {
   });
 
   test('Update all flags', () async {
-    final _created = await storageProvider.saveAll([
+    final created = await storageProvider.saveAll([
       Flag.seed('test_feature_a', enabled: false),
       Flag.seed('test_feature_b', enabled: true)
     ]);
-    expect(_created, isTrue);
-    final _all = await storageProvider.getAll();
-    expect(_all, isNotEmpty);
+    expect(created, isTrue);
+    final all0 = await storageProvider.getAll();
+    expect(all0, isNotEmpty);
     expect(
-        _all,
+        all0,
         const TypeMatcher<List<Flag>>().having(
             (p0) => p0
                 .firstWhereOrNull((element) => element.key == 'test_feature_a'),

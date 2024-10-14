@@ -44,28 +44,28 @@ void main() {
       expect(flag.feature.description, isNotNull);
     });
     test('When feature successfuly parsed', () async {
-      final _feature =
+      final feature =
           Feature.fromJson(jsonDecode(featureValue) as Map<String, dynamic>);
-      expect(_feature, isNotNull);
-      expect(_feature.id, 2);
+      expect(feature, isNotNull);
+      expect(feature.id, 2);
     });
 
     test('When flag successfuly parsed', () {
       var flag = Flag.fromJson(jsonDecode(testValue) as Map<String, dynamic>);
-      final _flag = flag.asString();
-      expect(_flag, isA<String>());
-      expect(_flag, isNotNull);
-      expect(_flag, isNotEmpty);
+      final flag0 = flag.asString();
+      expect(flag0, isA<String>());
+      expect(flag0, isNotNull);
+      expect(flag0, isNotEmpty);
     });
 
     test('When flag value successfuly updated', () {
       var flag = Flag.fromJson(jsonDecode(testValue) as Map<String, dynamic>);
-      final _feature = flag.feature.copyWith(initialValue: '12');
-      final _flag = flag.copyWith(feature: _feature);
+      final feature = flag.feature.copyWith(initialValue: '12');
+      final flag0 = flag.copyWith(feature: feature);
 
       expect(flag.feature.initialValue, '10');
-      expect(_flag.feature.initialValue, '12');
-      expect(flag.feature.initialValue, isNot(_flag.feature.initialValue));
+      expect(flag0.feature.initialValue, '12');
+      expect(flag.feature.initialValue, isNot(flag0.feature.initialValue));
     });
 
     test('When flag seed state is enabled', () {
@@ -100,13 +100,13 @@ void main() {
       expect(identity.flags, isNotEmpty);
       expect(identity.traits, isNotEmpty);
 
-      final _converted = identity.toJson();
-      expect(_converted, isNotNull);
-      expect(_converted, isNotEmpty);
+      final converted = identity.toJson();
+      expect(converted, isNotNull);
+      expect(converted, isNotEmpty);
 
-      final _copiedIdentity = identity.copyWith(flags: [], traits: []);
+      final copiedIdentity = identity.copyWith(flags: [], traits: []);
       expect(
-          _copiedIdentity,
+          copiedIdentity,
           const TypeMatcher<FlagsAndTraits>()
               .having((e) => e.flags, 'flags are empty', isEmpty)
               .having((e) => e.traits, 'traits are empty', isEmpty));
