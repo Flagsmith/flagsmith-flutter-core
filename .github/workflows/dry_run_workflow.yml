@@ -1,6 +1,9 @@
 name: Analyze and Test
 on: [push]
 
+env:
+  FLUTTER_VERSION: 3.x
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -9,8 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version-file: pubspec.yaml
-          channel: 'any'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
       - run: flutter pub get
       - run: flutter analyze
 
@@ -21,9 +23,7 @@ jobs:
     - uses: actions/checkout@v4
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version-file: pubspec.yaml
-        channel: 'any'
-
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter pub get
     - run: flutter pub test
 
@@ -45,7 +45,5 @@ jobs:
     - uses: actions/checkout@v4
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version-file: pubspec.yaml
-        channel: 'any'
-
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter pub publish --dry-run
