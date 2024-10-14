@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.0
+* Drop Flutter 2 support
+* feat: Support transient identities and traits
+
+## 3.1.0
+* Added a null check on enabled field of flag
+
 ## 3.0.0
 * trait/value: Add support for int,float, bool and string
 
