@@ -33,6 +33,14 @@ void main() {
   }''';
   final decodedTraitDoubleValue =
       jsonDecode(traitDoubleValue) as Map<String, dynamic>;
+  const transientTraitValue = '''{
+    "id": 12,
+    "trait_key": "trait_key",
+    "trait_value": "transient",
+    "transient": true
+  }''';
+  final decodedTransientTraitValue =
+      jsonDecode(transientTraitValue) as Map<String, dynamic>;
 
   group('[Trait] - basic tests', () {
     test('When trait parsed then success', () {
@@ -56,6 +64,14 @@ void main() {
     });
 
     test('When trait parsed with double value then success', () {
+      final trait = Trait.fromJson(decodedTransientTraitValue);
+      expect(trait.id, 12);
+      expect(trait.key, 'trait_key');
+      expect(trait.value, 'transient');
+      expect(trait.transient, true);
+    });
+
+    test('When transient trait parsed then success', () {
       final trait = Trait.fromJson(decodedTraitDoubleValue);
       expect(trait.id, 12);
       expect(trait.key, 'trait_key');
@@ -184,6 +200,25 @@ void main() {
       expect(mapped['id'], 12);
       expect(mapped['trait_key'], 'trait_key');
       expect(mapped['trait_value'], true);
+    });
+
+    test(
+        'When transient trait converted to Map<String, dynamic> then success',
+        () {
+      final trait = Trait(
+        id: 12,
+        key: 'trait_key',
+        value: 'transient',
+        transient: true,
+      );
+
+      final mapped = trait.toJson();
+
+      expect(mapped, isNotNull);
+      expect(mapped['id'], 12);
+      expect(mapped['trait_key'], 'trait_key');
+      expect(mapped['trait_value'], 'transient');
+      expect(mapped['transient'], true);
     });
   });
 }

@@ -1,16 +1,18 @@
 name: Analyze and Test
 on: [push]
 
+env:
+  FLUTTER_VERSION: 3.x
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
     name: Dart Analyze
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.x'
-          channel: 'any'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
       - run: flutter pub get
       - run: flutter analyze
 
@@ -18,12 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Flutter Test
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '2.x'
-        channel: 'any'
-
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter pub get
     - run: flutter pub test
 
@@ -32,7 +32,7 @@ jobs:
     name: Dart package score
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
@@ -42,10 +42,8 @@ jobs:
     name: Dart Publish Package Test
     needs: tests
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '2.x'
-        channel: 'any'
-
+        flutter-version: ${{ env.FLUTTER_VERSION }}
     - run: flutter pub publish --dry-run

@@ -1,3 +1,5 @@
+library;
+
 export 'feature.dart';
 export 'identity.dart';
 export 'flag.dart';

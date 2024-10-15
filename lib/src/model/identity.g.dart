@@ -8,12 +8,21 @@ part of 'identity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Identity _$IdentityFromJson(Map<String, dynamic> json) {
-  return Identity(
-    identifier: json['identifier'] as String,
-  );
-}
+Identity _$IdentityFromJson(Map<String, dynamic> json) => Identity(
+      transient: json['transient'] as bool?,
+      identifier: json['identifier'] as String,
+    );
 
-Map<String, dynamic> _$IdentityToJson(Identity instance) => <String, dynamic>{
-      'identifier': instance.identifier,
-    };
+Map<String, dynamic> _$IdentityToJson(Identity instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('transient', instance.transient);
+  val['identifier'] = instance.identifier;
+  return val;
+}
