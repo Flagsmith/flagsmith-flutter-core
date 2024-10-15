@@ -53,10 +53,10 @@ void main() {
       Flag.seed('test_feature_b', enabled: true)
     ]);
     expect(created, isTrue);
-    final all0 = await storageProvider.getAll();
-    expect(all0, isNotEmpty);
+    final all = await storageProvider.getAll();
+    expect(all, isNotEmpty);
     expect(
-        all0,
+        all,
         const TypeMatcher<List<Flag>>().having(
             (p0) => p0
                 .firstWhereOrNull((element) => element.key == 'test_feature_a'),
@@ -70,10 +70,10 @@ void main() {
       Flag.seed('test_feature_b', enabled: true)
     ]);
     expect(created, isTrue);
-    final all0 = await storageProvider.getAll();
-    expect(all0, isNotEmpty);
+    final all = await storageProvider.getAll();
+    expect(all, isNotEmpty);
     expect(
-        all0,
+        all,
         const TypeMatcher<List<Flag>>().having(
             (p0) => p0
                 .firstWhereOrNull((element) => element.key == 'test_feature_a'),
